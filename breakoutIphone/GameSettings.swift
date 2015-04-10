@@ -12,7 +12,7 @@ import SpriteKit
 
 extension SKEmitterNode {
     class func emitterNodeWithName(name: String) -> SKEmitterNode {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(NSBundle.mainBundle().pathForResource(name, ofType: "sks")!) as SKEmitterNode
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(NSBundle.mainBundle().pathForResource(name, ofType: "sks")!) as! SKEmitterNode
     }
 }
 

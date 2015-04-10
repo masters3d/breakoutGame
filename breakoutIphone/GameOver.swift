@@ -53,7 +53,9 @@ class GameOver: SKScene {
         println(" Game Over initianaled")
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent){
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+
+//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent){
     
         let soundStar : SKAction = SKAction.playSoundFileNamed("star.caf", waitForCompletion: true)
         self.runAction(soundStar)

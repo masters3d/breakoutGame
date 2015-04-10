@@ -231,8 +231,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     }
 
-
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+   
+//    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
         for touch: AnyObject in touches {
@@ -322,7 +323,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         //My Ball Position
        tempBallPositions.append(self.childNodeWithName("myBallNode")!.position)
         
-        var fireBallEmitter = self.childNodeWithName("myBallNode")!.children[0] as SKEmitterNode
+        var fireBallEmitter = self.childNodeWithName("myBallNode")!.children[0] as! SKEmitterNode
         // Do angle cal
         
         
