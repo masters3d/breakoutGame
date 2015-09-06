@@ -12,7 +12,11 @@ import SpriteKit
 
 extension SKEmitterNode {
     class func emitterNodeWithName(name: String) -> SKEmitterNode {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(NSBundle.mainBundle().pathForResource(name, ofType: "sks")!) as! SKEmitterNode
+        guard let bundle = NSBundle.mainBundle().pathForResource(name, ofType: "sks") else {
+            fatalError("Could not load bundle")
+        }
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(bundle) as! SKEmitterNode
+        
     }
 }
 

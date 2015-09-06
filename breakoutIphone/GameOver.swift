@@ -20,16 +20,16 @@ class GameOver: SKScene {
         super.init(size: size)
         //Sound
         let soundChom : SKAction = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: true)
-        self.runAction(soundChom)
+        runAction(soundChom)
         //Background
-        self.backgroundColor = SKColor.lightGrayColor()
+        backgroundColor = SKColor.lightGrayColor()
         //Label One
-        var label = SKLabelNode(fontNamed:"Futura Medium")
+        let label = SKLabelNode(fontNamed:"Futura Medium")
         label.text = "GAME OVER"
         label.fontColor = SKColor.blackColor()
         label.fontSize = 44
-        label.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
-        self.addChild(label)
+        label.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
+        addChild(label)
         
         
         
@@ -38,32 +38,30 @@ class GameOver: SKScene {
         //Label TryAgain
         
         
-        var labelTryAgain = SKLabelNode(fontNamed:"Futura Medium")
+        let labelTryAgain = SKLabelNode(fontNamed:"Futura Medium")
         labelTryAgain.text = "Try Again?"
         labelTryAgain.fontColor = SKColor.blackColor()
         labelTryAgain.fontSize = 44
         labelTryAgain.position = CGPoint(x: label.position.x, y: -50)
-        var moveTryAgainLabel = SKAction.moveToY(label.position.y - 80, duration: 0.5)
+        let moveTryAgainLabel = SKAction.moveToY(label.position.y - 80, duration: 0.5)
         labelTryAgain.runAction(moveTryAgainLabel)
-        self.addChild(labelTryAgain)
+        addChild(labelTryAgain)
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        println(" Game Over initianaled")
+        print(" Game Over initianaled")
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-
-//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent){
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
         let soundStar : SKAction = SKAction.playSoundFileNamed("star.caf", waitForCompletion: true)
-        self.runAction(soundStar)
+        runAction(soundStar)
         
-       //var firstScene = GameScene.sceneWithSize(self.size)
-        var firstScene = GameScene(size: self.size)
-        var startTansition = SKTransition.doorsOpenVerticalWithDuration(0.6)
-        self.view!.presentScene(firstScene, transition: startTansition)
+       //var firstScene = GameScene.sceneWithSize(size)
+        let firstScene = GameScene(size: size)
+        let startTansition = SKTransition.doorsOpenVerticalWithDuration(0.6)
+        view?.presentScene(firstScene, transition: startTansition)
         
         
     
