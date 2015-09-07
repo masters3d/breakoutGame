@@ -10,12 +10,11 @@ import SpriteKit
 
 class GameOver: SKScene {
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        print(" Game Over initianaled")
+    }
     
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-    
-
     override init(size: CGSize) {
         super.init(size: size)
         //Sound
@@ -33,8 +32,6 @@ class GameOver: SKScene {
         
         
         
-        
-        
         //Label TryAgain
         
         
@@ -48,10 +45,6 @@ class GameOver: SKScene {
         addChild(labelTryAgain)
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        print(" Game Over initianaled")
-    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     

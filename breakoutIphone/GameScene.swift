@@ -42,11 +42,9 @@ let screenBounds = UIScreen.mainScreen().bounds
 let screenScale = UIScreen.mainScreen().scale
 let midleX = UIScreen.mainScreen().bounds.width
 
-
 var holdPostion:CGPoint = CGPoint(x: midleX, y: 100)
 
 var gameSettings:Dictionary = ["paddlePositionUpdate":CGPoint(x: midleX, y: 100)]
-
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
     
@@ -61,7 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         commonInit();
     }
     
-    func commonInit () -> () {
+    func commonInit() {
         
         print("commonInit")
         
@@ -76,7 +74,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         // Rectangle around
         physicsBody = SKPhysicsBody(edgeLoopFromRect: frame )
         physicsBody?.categoryBitMask = edgeCategory
-        
         
         print("commonInit Done")
         
@@ -111,7 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         
         // Ball Dynamics
-        let randomNegPos = CGFloat((arc4random()%2))
+        let randomNegPos = CGFloat(arc4random()%2)
         var randomVector:CGFloat
         
         if randomNegPos == 0{
@@ -147,12 +144,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         
         addPlayer(size)
-        addBricks(70,LocY: 780,howmany: 6)
-        addBricks(120,LocY: 760,howmany: 5)
-        addBricks(120,LocY: 740,howmany: 5)
-        addBricks(180,LocY: 720,howmany: 4)
-        addBricks(230,LocY: 700,howmany: 3)
-        addBricks(280,LocY: 680,howmany: 2)
+        addBricks(locX: 70, locY: 780, quantity: 6)
+        addBricks(locX: 120,locY: 760, quantity: 5)
+        addBricks(locX: 120,locY: 740, quantity: 5)
+        addBricks(locX: 180,locY: 720, quantity: 4)
+        addBricks(locX: 230,locY: 700, quantity: 3)
+        addBricks(locX: 280,locY: 680, quantity: 2)
         
         //addBricks()
         
@@ -188,11 +185,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     
     
-    func addBricks(LocX:Int = 170, LocY:Int = 760, howmany:Int = 3){
+    func addBricks(locX locX:Int = 170, locY:Int = 760, quantity:Int = 3){
         var index = 0
-        var insertLocX = LocX
-        let insertLocY = LocY
-        let rangeInt = howmany-1
+        var insertLocX = locX
+        let insertLocY = locY
+        let rangeInt = quantity - 1
         
         
         for _ in 0...rangeInt{
@@ -323,8 +320,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         // SKAction.sequence(<#actions: AnyObject[]?#>)
         // SKAction.group(<#actions: AnyObject[]?#>)
-        
-        
         
         
         tempBallPositions.removeAtIndex(0)
