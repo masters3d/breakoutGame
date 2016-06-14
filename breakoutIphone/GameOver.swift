@@ -30,10 +30,7 @@ class GameOver: SKScene {
         label.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
         addChild(label)
         
-        
-        
         //Label TryAgain
-        
         
         let labelTryAgain = SKLabelNode(fontNamed:"Futura Medium")
         labelTryAgain.text = "Try Again?"
@@ -47,7 +44,6 @@ class GameOver: SKScene {
 
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    
         let soundStar : SKAction = SKAction.playSoundFileNamed("star.caf", waitForCompletion: true)
         runAction(soundStar)
         
@@ -55,13 +51,6 @@ class GameOver: SKScene {
         let firstScene = GameScene(size: size)
         let startTansition = SKTransition.doorsOpenVerticalWithDuration(0.6)
         view?.presentScene(firstScene, transition: startTansition)
-        
-        
-    
-    
     }
-
-
-
 
 }

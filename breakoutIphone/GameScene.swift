@@ -35,8 +35,6 @@ let colorsArray = [
     SKColor.purpleColor(),
     SKColor.brownColor()]
 
-
-
 // Scree size and bounds
 let screenBounds = UIScreen.mainScreen().bounds
 let screenScale = UIScreen.mainScreen().scale
@@ -81,8 +79,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     
     override func didMoveToView(view: SKView) {
-        
-        
         //CenterPoint
         let centerPoint = CGPoint(x:CGRectGetMidX(frame), y:CGRectGetMidY(frame))
         
@@ -98,15 +94,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         myBall.lineWidth = 3
         
         myBall.position = centerPoint
-        
         myBall.physicsBody = SKPhysicsBody(circleOfRadius: myBallWidth / 2.0)
         myBall.physicsBody?.restitution = 1 // 0-1
         myBall.physicsBody?.linearDamping = 0
         myBall.physicsBody?.friction = 0
         myBall.physicsBody?.categoryBitMask = ballCategory
         myBall.physicsBody?.contactTestBitMask = brickCategory | paddleCategory | bottomEdgeCat
-        
-        
         // Ball Dynamics
         let randomNegPos = CGFloat(arc4random()%2)
         var randomVector:CGFloat
@@ -174,12 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         myFloor.physicsBody?.affectedByGravity = false
         myFloor.physicsBody?.dynamic = false
         myFloor.physicsBody?.categoryBitMask = paddleCategory
-        
-        
         print("Paddle added")
-        
-        
-        
     }
     
     
@@ -190,7 +178,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         var insertLocX = locX
         let insertLocY = locY
         let rangeInt = quantity - 1
-        
         
         for _ in 0...rangeInt{
             let myBrickSize = CGSize(width: 99, height: 20)
@@ -214,7 +201,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             myBrick.physicsBody?.dynamic = false
             myBrick.physicsBody?.categoryBitMask = brickCategory
             
-            
             index += 1
             insertLocX += 100
             
@@ -237,14 +223,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             //Update the paddle to the x movement of the finger
             gameSettings["paddlePositionUpdate"] = CGPoint(x: location.x, y: 100)
         }
-        
         print("touchesMoved Paddle movement function")
-        
     }
-    
-    
-    //func didBeginContact(){
-    //println( "is this woring")
     
     func didBeginContact(contact : SKPhysicsContact){
         let soundPaddle = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
@@ -270,15 +250,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             view?.presentScene(endScene, transition: endTansition)
             
         }
-        
         print("did begin contact")
-        
-        
     }
     
     override func update(currentTime: CFTimeInterval) {
-        
-        
         var paddlePosition = gameSettings["paddlePositionUpdate"] ?? CGPoint()
         let paddle = childNodeWithName("myFloorNode")
         let paddleRect = paddle?.calculateAccumulatedFrame()
@@ -286,14 +261,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let paddleMidWidth = paddleWidth / 2
         let paddleRightPadding = size.width - paddleMidWidth
         
-        
         if paddlePosition.x < paddleMidWidth {
             paddlePosition.x = paddleMidWidth
         }
         if paddlePosition.x > paddleRightPadding{
             paddlePosition.x = paddleRightPadding
         }
-        
         
         childNodeWithName("myFloorNode")?.position = paddlePosition
         
@@ -307,7 +280,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let xDiff = (tempBallPositions[0].x - tempBallPositions[1].x)
         let yDiff = (tempBallPositions[0].y - tempBallPositions[1].y)
         
-        
         let xyDiff = atan2(yDiff, xDiff)
         
         let radiantAngle = xyDiff - 2.0
@@ -317,18 +289,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         fireBallEmitter.zRotation = radiantAngle
         //fireBallEmitter.emissionAngle = CGFloat(angleDegree)
         
-        
-        // SKAction.sequence(<#actions: AnyObject[]?#>)
-        // SKAction.group(<#actions: AnyObject[]?#>)
-        
-        
         tempBallPositions.removeAtIndex(0)
-        
-        
-        
-        //println(angleDegree)
-        //println(tempBallPositions)
-        
         
         /* Called before each frame is rendered */
     }

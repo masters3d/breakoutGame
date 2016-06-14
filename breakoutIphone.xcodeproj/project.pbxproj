@@ -14,7 +14,6 @@
 		9D576DA7196596FC00B322CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D576DA5196596FC00B322CC /* Main.storyboard */; };
 		9D576DA9196596FC00B322CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D576DA8196596FC00B322CC /* Images.xcassets */; };
 		9D576DB5196596FD00B322CC /* breakoutIphoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D576DB4196596FD00B322CC /* breakoutIphoneTests.swift */; };
-		9D57ED23196CB76100989192 /* GraphicsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D57ED22196CB76100989192 /* GraphicsUtilities.swift */; };
 		9D6527FD196908E50042BD33 /* Chomp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9D6527F7196908E50042BD33 /* Chomp.wav */; };
 		9D6527FE196908E50042BD33 /* Drip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9D6527F8196908E50042BD33 /* Drip.wav */; };
 		9D6527FF196908E50042BD33 /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9D6527F9196908E50042BD33 /* Error.wav */; };
@@ -65,7 +64,6 @@
 		9D576DAE196596FD00B322CC /* breakoutIphoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = breakoutIphoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D576DB3196596FD00B322CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D576DB4196596FD00B322CC /* breakoutIphoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = breakoutIphoneTests.swift; sourceTree = "<group>"; };
-		9D57ED22196CB76100989192 /* GraphicsUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsUtilities.swift; sourceTree = "<group>"; };
 		9D6527F7196908E50042BD33 /* Chomp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Chomp.wav; sourceTree = "<group>"; };
 		9D6527F8196908E50042BD33 /* Drip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drip.wav; sourceTree = "<group>"; };
 		9D6527F9196908E50042BD33 /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Error.wav; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 		9D576D8F196596FA00B322CC = {
 			isa = PBXGroup;
 			children = (
-				9D57ED22196CB76100989192 /* GraphicsUtilities.swift */,
 				9D576D9A196596FA00B322CC /* breakoutIphone */,
 				9D576DB1196596FD00B322CC /* breakoutIphoneTests */,
 				9D576D99196596FA00B322CC /* Products */,
@@ -281,7 +278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D57ED23196CB76100989192 /* GraphicsUtilities.swift in Sources */,
 				9D576DA2196596FC00B322CC /* GameScene.swift in Sources */,
 				9D576DA4196596FC00B322CC /* GameViewController.swift in Sources */,
 				9DC51E8A1967BB0D008D4317 /* GameSettings.swift in Sources */,
