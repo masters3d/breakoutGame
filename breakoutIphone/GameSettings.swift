@@ -9,26 +9,26 @@
 import UIKit
 import SpriteKit
 extension SKEmitterNode {
-    class func emitterNodeWithName(name: String) -> SKEmitterNode {
-        guard let bundle = NSBundle.mainBundle().pathForResource(name, ofType: "sks") else {
+    class func emitterNodeWithName(_ name: String) -> SKEmitterNode {
+        guard let bundle = Bundle.main().pathForResource(name, ofType: "sks") else {
             fatalError("Could not load bundle")
         }
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(bundle) as! SKEmitterNode
+        return NSKeyedUnarchiver.unarchiveObject(withFile: bundle) as! SKEmitterNode
     }
 }
 
 
 extension SKNode {
-    class func unarchiveFromFile(file : NSString) -> SKNode? {
-        guard let path = NSBundle.mainBundle().pathForResource(file as String, ofType: "sks") else {
+    class func unarchiveFromFile(_ file : NSString) -> SKNode? {
+        guard let path = Bundle.main().pathForResource(file as String, ofType: "sks") else {
             fatalError("Could not load bundle") }
         
-        guard let sceneData = try? NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe) else {
+        guard let sceneData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .dataReadingMappedIfSafe) else {
             fatalError("Could not load bundle")
         }
-        let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+        let archiver = NSKeyedUnarchiver(forReadingWith: sceneData)
         archiver.setClass(classForKeyedUnarchiver(), forClassName: "SKScene")
-        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
+        let scene = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! GameScene
         archiver.finishDecoding()
         return scene
     }

@@ -25,20 +25,20 @@ let waterCategory   :UInt32 = 0x1 << 5
 
 
 let colorsArray = [
-    SKColor.redColor(),
-    SKColor.greenColor(),
-    SKColor.blueColor(),
-    SKColor.cyanColor(),
-    SKColor.yellowColor(),
-    SKColor.magentaColor(),
-    SKColor.orangeColor(),
-    SKColor.purpleColor(),
-    SKColor.brownColor()]
+    SKColor.red(),
+    SKColor.green(),
+    SKColor.blue(),
+    SKColor.cyan(),
+    SKColor.yellow(),
+    SKColor.magenta(),
+    SKColor.orange(),
+    SKColor.purple(),
+    SKColor.brown()]
 
 // Scree size and bounds
-let screenBounds = UIScreen.mainScreen().bounds
-let screenScale = UIScreen.mainScreen().scale
-let midleX = UIScreen.mainScreen().bounds.width
+let screenBounds = UIScreen.main().bounds
+let screenScale = UIScreen.main().scale
+let midleX = UIScreen.main().bounds.width
 
 var holdPostion:CGPoint = CGPoint(x: midleX, y: 100)
 
@@ -65,12 +65,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         physicsWorld.gravity = CGVector(dx: 0,dy: 0)
         
         //General Settings
-        backgroundColor = SKColor.whiteColor()
+        backgroundColor = SKColor.white()
         physicsWorld.contactDelegate = self
         
         
         // Rectangle around
-        physicsBody = SKPhysicsBody(edgeLoopFromRect: frame )
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame )
         physicsBody?.categoryBitMask = edgeCategory
         
         print("commonInit Done")
@@ -78,9 +78,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         //CenterPoint
-        let centerPoint = CGPoint(x:CGRectGetMidX(frame), y:CGRectGetMidY(frame))
+        let centerPoint = CGPoint(x:frame.midX, y:frame.midY)
         
         //Set up my ball
         // circleof Radious not avalible in IOS7
@@ -110,7 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             randomVector = 8
         }
         
-        let myBallVector = CGVectorMake(randomVector,8)
+        let myBallVector = CGVector(dx: randomVector,dy: 8)
         myBall.physicsBody?.applyImpulse(myBallVector)
         //myBall.strokeColor = SKColor.blueColor()
         //myBall.glowWidth = 0.5
@@ -129,10 +129,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         //var myBottomEdge = SKShapeNode(rect: myBottomEdgeRec )
         let myBottomEdge = SKShapeNode(rect: myBottomEdgeRec )
         addChild(myBottomEdge)
-        myBottomEdge.strokeColor = SKColor.redColor()
+        myBottomEdge.strokeColor = SKColor.red()
         
         
-        myBottomEdge.physicsBody = SKPhysicsBody(edgeLoopFromRect: myBottomEdgeRec)
+        myBottomEdge.physicsBody = SKPhysicsBody(edgeLoopFrom: myBottomEdgeRec)
         myBottomEdge.physicsBody?.categoryBitMask = bottomEdgeCat
         
         
@@ -150,22 +150,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
-    func addPlayer(Size:CGSize){
+    func addPlayer(_ Size:CGSize){
         
         let myFloorSize = CGSize(width: 150, height: 20)
         
         //Corner Radius does not work in IOs7
-        let myFloor = SKShapeNode(rectOfSize: myFloorSize, cornerRadius: 9.9)
+        let myFloor = SKShapeNode(rectOf: myFloorSize, cornerRadius: 9.9)
         //var myFloor = SKShapeNode(rectOfSize: myFloorSize)
         myFloor.name = "myFloorNode"
         addChild(myFloor)
-        myFloor.strokeColor = SKColor.blackColor()
-        myFloor.fillColor = SKColor.redColor()
+        myFloor.strokeColor = SKColor.black()
+        myFloor.fillColor = SKColor.red()
         let myFloorLocation = CGPoint(x: size.width/2, y:100 )
         myFloor.position = myFloorLocation
-        myFloor.physicsBody = SKPhysicsBody(rectangleOfSize: myFloorSize, center: frame.origin)
+        myFloor.physicsBody = SKPhysicsBody(rectangleOf: myFloorSize, center: frame.origin)
         myFloor.physicsBody?.affectedByGravity = false
-        myFloor.physicsBody?.dynamic = false
+        myFloor.physicsBody?.isDynamic = false
         myFloor.physicsBody?.categoryBitMask = paddleCategory
         print("Paddle added")
     }
@@ -173,7 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     
     
-    func addBricks(locX locX:Int = 170, locY:Int = 760, quantity:Int = 3){
+    func addBricks(locX:Int = 170, locY:Int = 760, quantity:Int = 3){
         var index = 0
         var insertLocX = locX
         let insertLocY = locY
@@ -183,22 +183,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             let myBrickSize = CGSize(width: 99, height: 20)
             //courner radious doesnt work in IOS7
             //var myBrick = SKShapeNode(rectOfSize: myBrickSize, cornerRadius: 0)
-            let myBrick = SKShapeNode(rectOfSize: myBrickSize)
+            let myBrick = SKShapeNode(rectOf: myBrickSize)
             
             myBrick.name = "myBrickNode"
             addChild(myBrick)
             // myBrick.strokeColor = colorsArray[Int((arc4random()%UInt32(colorsArray.count)))]
             //TODO: Need to fix the color of the stroke
             
-            myBrick.strokeColor = SKColor.blackColor()
+            myBrick.strokeColor = SKColor.black()
             
             myBrick.fillColor = colorsArray[Int((arc4random()%UInt32(colorsArray.count)))]
             
             let myBrickLocation = CGPoint(x: insertLocX, y:insertLocY )
             myBrick.position = myBrickLocation
-            myBrick.physicsBody = SKPhysicsBody(rectangleOfSize: myBrickSize, center: frame.origin)
+            myBrick.physicsBody = SKPhysicsBody(rectangleOf: myBrickSize, center: frame.origin)
             myBrick.physicsBody?.affectedByGravity = false
-            myBrick.physicsBody?.dynamic = false
+            myBrick.physicsBody?.isDynamic = false
             myBrick.physicsBody?.categoryBitMask = brickCategory
             
             index += 1
@@ -209,13 +209,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         /* Called when a touch begins */
         
         for touch in touches {
             
-            let location = touch.locationInNode(self)
+            let location = touch.location(in: self)
             
             // Moves the paddle to the middle of the screen
             gameSettings["paddlePositionUpdate"] = CGPoint(x:midleX, y:100)
@@ -226,7 +226,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         print("touchesMoved Paddle movement function")
     }
     
-    func didBeginContact(contact : SKPhysicsContact){
+    func didBegin(_ contact : SKPhysicsContact){
         let soundPaddle = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
         let soundScrape = SKAction.playSoundFileNamed("Scrape.wav", waitForCompletion: false)
         
@@ -234,10 +234,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if contact.bodyA.categoryBitMask == brickCategory{
             contact.bodyA.node?.removeFromParent()
             print("BRICK A")
-            runAction(soundScrape)}
+            run(soundScrape)}
         
         if contact.bodyA.categoryBitMask == paddleCategory{
-            runAction(soundPaddle)
+            run(soundPaddle)
             print("Paddle")
         }
         if contact.bodyA.categoryBitMask == bottomEdgeCat{
@@ -245,7 +245,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
             let endScene = GameOver(size: size)
             
-            let endTansition = SKTransition.doorsCloseHorizontalWithDuration(0.5)
+            let endTansition = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
             
             view?.presentScene(endScene, transition: endTansition)
             
@@ -253,9 +253,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         print("did begin contact")
     }
     
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         var paddlePosition = gameSettings["paddlePositionUpdate"] ?? CGPoint()
-        let paddle = childNodeWithName("myFloorNode")
+        let paddle = childNode(withName: "myFloorNode")
         let paddleRect = paddle?.calculateAccumulatedFrame()
         let paddleWidth = paddleRect?.width ?? CGFloat(0)
         let paddleMidWidth = paddleWidth / 2
@@ -268,12 +268,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             paddlePosition.x = paddleRightPadding
         }
         
-        childNodeWithName("myFloorNode")?.position = paddlePosition
+        childNode(withName: "myFloorNode")?.position = paddlePosition
         
         //My Ball Position
-        tempBallPositions.append((childNodeWithName("myBallNode")?.position) ?? CGPoint())
+        tempBallPositions.append((childNode(withName: "myBallNode")?.position) ?? CGPoint())
         
-        let fireBallEmitter = childNodeWithName("myBallNode")?.children[0] as! SKEmitterNode
+        let fireBallEmitter = childNode(withName: "myBallNode")?.children[0] as! SKEmitterNode
         // Do angle cal
         
         
@@ -289,7 +289,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         fireBallEmitter.zRotation = radiantAngle
         //fireBallEmitter.emissionAngle = CGFloat(angleDegree)
         
-        tempBallPositions.removeAtIndex(0)
+        tempBallPositions.remove(at: 0)
         
         /* Called before each frame is rendered */
     }

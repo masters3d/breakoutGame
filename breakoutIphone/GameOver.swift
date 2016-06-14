@@ -19,37 +19,37 @@ class GameOver: SKScene {
         super.init(size: size)
         //Sound
         let soundChom : SKAction = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: true)
-        runAction(soundChom)
+        run(soundChom)
         //Background
-        backgroundColor = SKColor.lightGrayColor()
+        backgroundColor = SKColor.lightGray()
         //Label One
         let label = SKLabelNode(fontNamed:"Futura Medium")
         label.text = "GAME OVER"
-        label.fontColor = SKColor.blackColor()
+        label.fontColor = SKColor.black()
         label.fontSize = 44
-        label.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
+        label.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(label)
         
         //Label TryAgain
         
         let labelTryAgain = SKLabelNode(fontNamed:"Futura Medium")
         labelTryAgain.text = "Try Again?"
-        labelTryAgain.fontColor = SKColor.blackColor()
+        labelTryAgain.fontColor = SKColor.black()
         labelTryAgain.fontSize = 44
         labelTryAgain.position = CGPoint(x: label.position.x, y: -50)
-        let moveTryAgainLabel = SKAction.moveToY(label.position.y - 80, duration: 0.5)
-        labelTryAgain.runAction(moveTryAgainLabel)
+        let moveTryAgainLabel = SKAction.moveTo(y: label.position.y - 80, duration: 0.5)
+        labelTryAgain.run(moveTryAgainLabel)
         addChild(labelTryAgain)
     }
 
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let soundStar : SKAction = SKAction.playSoundFileNamed("star.caf", waitForCompletion: true)
-        runAction(soundStar)
+        run(soundStar)
         
        //var firstScene = GameScene.sceneWithSize(size)
         let firstScene = GameScene(size: size)
-        let startTansition = SKTransition.doorsOpenVerticalWithDuration(0.6)
+        let startTansition = SKTransition.doorsOpenVertical(withDuration: 0.6)
         view?.presentScene(firstScene, transition: startTansition)
     }
 

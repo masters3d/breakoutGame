@@ -26,17 +26,17 @@ class GameViewController: UIViewController {
             
             /* Set the scale mode to scale to fit the window */
             //scene.scaleMode = .AspectFill
-            scene.scaleMode = .Fill
+            scene.scaleMode = .fill
             
             skView.presentScene(scene)
         }
     }
     //override func shouldAutorotate() -> Bool {return true }
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return UIInterfaceOrientationMask.AllButUpsideDown
+        if UIDevice.current().userInterfaceIdiom == .phone {
+            return UIInterfaceOrientationMask.allButUpsideDown
         } else {
-            return UIInterfaceOrientationMask.All
+            return UIInterfaceOrientationMask.all
         }
     }
 
