@@ -21,11 +21,11 @@ class GameOver: SKScene {
         let soundChom : SKAction = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: true)
         run(soundChom)
         //Background
-        backgroundColor = SKColor.lightGray()
+        backgroundColor = SKColor.lightGray
         //Label One
         let label = SKLabelNode(fontNamed:"Futura Medium")
         label.text = "GAME OVER"
-        label.fontColor = SKColor.black()
+        label.fontColor = SKColor.black
         label.fontSize = 44
         label.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(label)
@@ -34,7 +34,7 @@ class GameOver: SKScene {
         
         let labelTryAgain = SKLabelNode(fontNamed:"Futura Medium")
         labelTryAgain.text = "Try Again?"
-        labelTryAgain.fontColor = SKColor.black()
+        labelTryAgain.fontColor = SKColor.black
         labelTryAgain.fontSize = 44
         labelTryAgain.position = CGPoint(x: label.position.x, y: -50)
         let moveTryAgainLabel = SKAction.moveTo(y: label.position.y - 80, duration: 0.5)

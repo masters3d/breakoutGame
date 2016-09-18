@@ -25,20 +25,20 @@ let waterCategory   :UInt32 = 0x1 << 5
 
 
 let colorsArray = [
-    SKColor.red(),
-    SKColor.green(),
-    SKColor.blue(),
-    SKColor.cyan(),
-    SKColor.yellow(),
-    SKColor.magenta(),
-    SKColor.orange(),
-    SKColor.purple(),
-    SKColor.brown()]
+    SKColor.red,
+    SKColor.green,
+    SKColor.blue,
+    SKColor.cyan,
+    SKColor.yellow,
+    SKColor.magenta,
+    SKColor.orange,
+    SKColor.purple,
+    SKColor.brown]
 
 // Scree size and bounds
-let screenBounds = UIScreen.main().bounds
-let screenScale = UIScreen.main().scale
-let midleX = UIScreen.main().bounds.width
+let screenBounds = UIScreen.main.bounds
+let screenScale = UIScreen.main.scale
+let midleX = UIScreen.main.bounds.width
 
 var holdPostion:CGPoint = CGPoint(x: midleX, y: 100)
 
@@ -65,7 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         physicsWorld.gravity = CGVector(dx: 0,dy: 0)
         
         //General Settings
-        backgroundColor = SKColor.white()
+        backgroundColor = SKColor.white
         physicsWorld.contactDelegate = self
         
         
@@ -129,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         //var myBottomEdge = SKShapeNode(rect: myBottomEdgeRec )
         let myBottomEdge = SKShapeNode(rect: myBottomEdgeRec )
         addChild(myBottomEdge)
-        myBottomEdge.strokeColor = SKColor.red()
+        myBottomEdge.strokeColor = SKColor.red
         
         
         myBottomEdge.physicsBody = SKPhysicsBody(edgeLoopFrom: myBottomEdgeRec)
@@ -159,8 +159,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         //var myFloor = SKShapeNode(rectOfSize: myFloorSize)
         myFloor.name = "myFloorNode"
         addChild(myFloor)
-        myFloor.strokeColor = SKColor.black()
-        myFloor.fillColor = SKColor.red()
+        myFloor.strokeColor = SKColor.black
+        myFloor.fillColor = SKColor.red
         let myFloorLocation = CGPoint(x: size.width/2, y:100 )
         myFloor.position = myFloorLocation
         myFloor.physicsBody = SKPhysicsBody(rectangleOf: myFloorSize, center: frame.origin)
@@ -190,7 +190,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             // myBrick.strokeColor = colorsArray[Int((arc4random()%UInt32(colorsArray.count)))]
             //TODO: Need to fix the color of the stroke
             
-            myBrick.strokeColor = SKColor.black()
+            myBrick.strokeColor = SKColor.black
             
             myBrick.fillColor = colorsArray[Int((arc4random()%UInt32(colorsArray.count)))]
             

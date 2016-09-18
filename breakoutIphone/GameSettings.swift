@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 extension SKEmitterNode {
     class func emitterNodeWithName(_ name: String) -> SKEmitterNode {
-        guard let bundle = Bundle.main().pathForResource(name, ofType: "sks") else {
+        guard let bundle = Bundle.main.path(forResource: name, ofType: "sks") else {
             fatalError("Could not load bundle")
         }
         return NSKeyedUnarchiver.unarchiveObject(withFile: bundle) as! SKEmitterNode
@@ -20,10 +20,10 @@ extension SKEmitterNode {
 
 extension SKNode {
     class func unarchiveFromFile(_ file : NSString) -> SKNode? {
-        guard let path = Bundle.main().pathForResource(file as String, ofType: "sks") else {
+        guard let path = Bundle.main.path(forResource: file as String, ofType: "sks") else {
             fatalError("Could not load bundle") }
         
-        guard let sceneData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .dataReadingMappedIfSafe) else {
+        guard let sceneData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .dataReadingMapped) else {
             fatalError("Could not load bundle")
         }
         let archiver = NSKeyedUnarchiver(forReadingWith: sceneData)
